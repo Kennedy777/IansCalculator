@@ -2,44 +2,39 @@
 var firstNum = 0;
 var secondNum = 0;
 var answer = 0;
+var displayBar = "";
 var operator = "";
-var flag = false;
-var argumentFlag = false;
 var operatorFlag = false;
+var answerFlag = false;
 
 function myClickNum(num){
-  if(!argumentFlag){
-    if(!flag){
-      firstNum = num;
-      flag = true;
-      console.log(firstNum);
-    }else{
-      secondNum = num;
-      argumentFlag = true;
-      console.log(secondNum);
-    }
-  }else{
-    alert("You already have two arguments");
+  if(answerFlag){
+    clearDisplay();
+    answerFlag = false;
   }
+  updateDisplay(num);
 }
 
 function myClickOper(oper){
   if(!operatorFlag){
     operator+=oper;
+    firstNum = parseInt(displayBar);
     operatorFlag = true;
-    console.log(operator);
+    clearDisplay();
   }else{
     alert("Already entered an operator");
   }
 }
 function myClickEqual(){
+  secondNum = parseInt(displayBar);
   answer = calcClick(firstNum, secondNum, operator);
-  firstNum = answer;
+  firstNum = answer.toPrecision(4);
   secondNum = 0;
-  document.getElementById("displayText").value = firstNum;
+  displayBar = firstNum;
+  $("#displayText").text(firstNum.toString());
   operator = "";
-  argumentFlag = false;
   operatorFlag = false;
+  answerFlag = true;
   console.log("Your answer is " + answer);
 }
 
@@ -47,8 +42,8 @@ function myClickClear(){
   firstNum = 0;
   secondNum = 0;
   operator = "";
+  clearDisplay();
   flag = false;
-  argumentFlag = false;
   operatorFlag = false;
 }
 
@@ -79,4 +74,14 @@ function multiply(x,y){
 }
 function divide(x,y){
   return x/y;
+}
+
+function clearDisplay(){
+  displayBar = "";
+  $("#displayText").text(displayBar);
+}
+
+function updateDisplay(val){
+  displayBar += val;
+  $("#displayText").text(displayBar);
 }
