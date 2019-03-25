@@ -18,7 +18,7 @@ function myClickNum(num){
 function myClickOper(oper){
   if(!operatorFlag){
     operator+=oper;
-    firstNum = parseInt(displayBar);
+    firstNum = parseFloat(displayBar);
     operatorFlag = true;
     clearDisplay();
   }else{
@@ -26,9 +26,10 @@ function myClickOper(oper){
   }
 }
 function myClickEqual(){
-  secondNum = parseInt(displayBar);
+  secondNum = parseFloat(displayBar);
   answer = calcClick(firstNum, secondNum, operator);
-  firstNum = answer.toPrecision(4);
+  if(answer)
+  firstNum = answer;
   secondNum = 0;
   displayBar = firstNum;
   $("#displayText").text(firstNum.toString());
@@ -73,7 +74,13 @@ function multiply(x,y){
   return x*y;
 }
 function divide(x,y){
-  return x/y;
+  var ans;
+  if(x%y != 0){
+    ans =  (x/y).toFixed(2);
+  }else{
+    ans = (x/y);
+  }
+  return ans;
 }
 
 function clearDisplay(){
