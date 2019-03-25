@@ -1,0 +1,41 @@
+.borderWrap{
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+.row{
+  height: inherit;
+}
+
+.container{
+  height:100vh;
+}
+.rightWrap{
+  text-align: right;
+}
+
+.classRow{
+  height:20%;
+}
+.buttonPad{
+  padding:5%;
+  height:100%;ß
+}
+.calcButton{
+  height: 100%;
+  width: 100%;
+}
+
+.centerWrap{
+  text-align: center;
+}
+
+#padEquals{
+  padding:2.5%;
+}
+
+#displayText{
+  font-size: 7rem;
+  padding-top: 10%;
+  transform: translateY(-10%);
+}
