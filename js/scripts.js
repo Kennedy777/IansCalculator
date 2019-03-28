@@ -28,7 +28,6 @@ function myClickOper(oper){
 function myClickEqual(){
   secondNum = parseFloat(displayBar);
   answer = calcClick(firstNum, secondNum, operator);
-  if(answer)
   firstNum = answer;
   secondNum = 0;
   displayBar = firstNum;
